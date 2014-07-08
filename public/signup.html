@@ -1,0 +1,42 @@
+<h1 class="na-align hspec"> Angular Application Demo With NodeJs, Express & Mysql DB</h1>
+	<div class="clear"></div>
+	<form name="signupForm" method="post" ng-submit="registerUser()">
+		<div class="usrnamedv" ng-class="{true:'error'}[submitted && signupForm.username.$error]">
+			<label for="username">User Name:</label> 
+			<input type="text" name="username" ng-model="user.username" ng-pattern="NAME_REGEXP" placeholder="Username" required/>
+			<span ng-show="submitted && signupForm.username.$error.required" class="error">Please enter user name</span><br/>
+			<span ng-show="submitted && signupForm.username.$error.pattern" class="error">User name can contain only letters, numbers & _.-</span>
+		</div>
+		
+		<div class="clear"></div>
+		
+		<div class="usremaildv" ng-class="{true:'error'}[submitted && signupForm.useremail.$error]">
+			<label for="useremail">Email Id:</label> 
+			<input type="text" name="useremail" ng-model="user.useremail" ng-pattern="EMAIL_REGEXP" placeholder="Email Id" style="margin-left: 52px;" required/>
+			<span ng-show="submitted && signupForm.useremail.$error.required" class="error">Please enter user name</span><br/>
+			<span ng-show="submitted && signupForm.useremail.$error.pattern" class="error">Invalid email id</span>
+		</div>
+		
+		<div class="clear"></div>
+		
+		<div class="usrpassworddv" ng-class="{true:'error'}[submitted && signupForm.password.$error]">
+			<label for="password"> Password: </label> 
+			<input type="password" name="password" ng-pattern="VPSWD" ng-model="user.password" placeholder="password" style="margin-left: 39px;" required/>
+			<span ng-show="submitted && signupForm.password.$error.required" class="error">Please enter password</span>
+			<span ng-show="submitted && signupForm.password.$error.pattern" class="error">Password should contain at least one number, small case, capital case letter</span>
+			<span ng-show="submitted && user.pswd.length < 8" class="error">Password length should range bet<sup>n</sup>. 8-30 characters</span>
+		</div>
+		
+		<input type="hidden" ng-model="user.id" value={{Math.floor((Math.random()*6)+1)}} />
+		
+		<div class="clear"></div>
+		
+		<div class="logPanel na-align">
+			<a href="#/logpg" id="logBtn">Login</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="submit" ng-click="submitted=true"> Sign Up </button>
+		</div>
+		
+		<p class="text-center" ng-show="loading" style="display:none">
+			<span class="fa fa-spinner fa-spin fa-3x"></span>
+		</p>
+	</form> 
