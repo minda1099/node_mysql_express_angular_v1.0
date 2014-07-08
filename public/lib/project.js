@@ -17,7 +17,10 @@ var gimme = angular.module('gimme',['mysql']);
 	
 	function loginCtrl($scope)
 	{ 
-		alert('Loading...');
+		$scope.loginUser = function()
+		{
+			alert("Login Page Under Development !");
+		}
 	}
 	
 	gimme.controller('mainCtrl', function($scope, $location, SignUpUser)
