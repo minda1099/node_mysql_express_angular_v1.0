@@ -1,0 +1,87 @@
+body, div
+{
+	font: arial, 14px;
+	color: #999;
+	margin:0px auto;
+}
+
+.clear
+{
+	clear:both;
+}
+
+.na-align
+{
+	text-align : center;
+}
+
+.hspec
+{
+	box-shadow: 10px 9px 8px #E7E7E7;
+	height: 94px;
+	padding-top: 20px;
+	margin-bottom:10px;
+	margin-bottom: 55px;
+	color:#43ac6a;
+}
+
+form[name='loginForm'], form[name='signupForm']
+{
+	box-shadow: 1px 2px 12px 4px #E7E7E7;
+	width: 500px;
+	margin: 0px auto;
+	border-radius:15px;
+	padding-top: 18px;
+}
+
+button , #logBtn
+{
+	margin: 0px auto;
+	width: auto;
+	padding: 15px 30px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size:16px;
+	font-weight:bold;
+	color:#666;
+}
+#logBtn
+{
+	text-decoration : none;
+}
+
+button:hover, #logBtn:hover
+{
+	background-color: #43ac6a;
+	color:#FFF;
+}
+
+.logPanel
+{
+width: 430px;
+padding: 15px 20px 30px 20px;
+}
+
+.usrnamedv, .usrpassworddv, .usremaildv
+{
+	height:auto; width:100%; padding: 20px 50px;
+}
+
+input
+{
+	margin-left: 30px;
+	height: 40px;
+	width: 257px;
+	border: 1px solid #dddddd;
+	text-indent:10px;
+	margin-bottom: 12px;
+}
+
+.error
+{
+	margin-left: 114px;
+	color:#ff0000;
+	font-style:italic;
+	font-size:12px;
+}
