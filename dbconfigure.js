@@ -7,11 +7,11 @@ exports.setupDB = function(conn)
 	if(!process.env.VCAP_SERVICES)
 	{
 		connection.query("CREATE DATABASE IF NOT EXISTS MyNodeData;", function(err)	{
-			if(err) return console.log("1: "+err);
+			if(err) return console.log(err);
 		});
 		
 		connection.query("Use MyNodeData;", function(err) {
-			if(err) return console.log("2: "+err);
+			if(err) return console.log(err);
 		});
 	}
 		
