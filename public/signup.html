@@ -5,7 +5,7 @@
 			<label for="username">User Name:</label> 
 			<input type="text" name="username" ng-model="user.username" ng-pattern="NAME_REGEXP" placeholder="Username" required/>
 			<span ng-show="submitted && signupForm.username.$error.required" class="error">Please enter user name</span><br/>
-			<span ng-show="submitted && signupForm.username.$error.pattern" class="error">User name can contain only letters, numbers & _.-</span>
+			<span ng-show="submitted && signupForm.username.$error.pattern" class="error">User name should start with letter & can contain numbers & _.-</span>
 		</div>
 		
 		<div class="clear"></div>
@@ -13,7 +13,7 @@
 		<div class="usremaildv" ng-class="{true:'error'}[submitted && signupForm.useremail.$error]">
 			<label for="useremail">Email Id:</label> 
 			<input type="text" name="useremail" ng-model="user.useremail" ng-pattern="EMAIL_REGEXP" placeholder="Email Id" style="margin-left: 52px;" required/>
-			<span ng-show="submitted && signupForm.useremail.$error.required" class="error">Please enter user name</span><br/>
+			<span ng-show="submitted && signupForm.useremail.$error.required" class="error">Please enter email id</span><br/>
 			<span ng-show="submitted && signupForm.useremail.$error.pattern" class="error">Invalid email id</span>
 		</div>
 		
@@ -27,10 +27,10 @@
 			<span ng-show="submitted && user.pswd.length < 8" class="error">Password length should range bet<sup>n</sup>. 8-30 characters</span>
 		</div>
 		
-		<input type="hidden" ng-model="user.id" value={{Math.floor((Math.random()*6)+1)}} />
+		<!-- <input type="hidden" ng-model="user.id" value={{Math.floor((Math.random()*6)+1)}} /> -->
 		
 		<div class="clear"></div>
-		
+		<center>{{user.username}} <br/> {{user.useremail}}</center>
 		<div class="logPanel na-align">
 			<a href="#/logpg" id="logBtn">Login</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button type="submit" ng-click="submitted=true"> Sign Up </button>
