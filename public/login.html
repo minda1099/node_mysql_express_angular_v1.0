@@ -2,26 +2,27 @@
 	<div class="clear"></div>
 	
 	<form name="loginForm" ng-submit="loginUser()">
-		<div class="usremaildv" ng-class="{true:'error'}[submitted && loginForm.useremail.$error]">
+		<div class="usremaildv" ng-class="{true:'error'}[logsubmitted && loginForm.useremail.$error]">
 			<label for="useremail">Email Id:</label> 
-			<input type="text" name="useremail" ng-model="user.email" ng-pattern="EMAIL_REGEXP" style="margin-left: 52px;" required/>
-			<span ng-show="submitted && loginForm.useremail.$error.required" class="error">Please enter user name</span>
-			<span ng-show="submitted && loginForm.useremail.$error.pattern" class="error">Invalid email id</span>
+			<input type="text" name="logemail" ng-model="loguser.logemail" ng-pattern="EMAIL_REGEXP" style="margin-left: 52px;" required/>
+			<span ng-show="logsubmitted && loginForm.logemail.$error.required" class="error">Please enter user name</span>
+			<span ng-show="logsubmitted && loginForm.logemail.$error.pattern" class="error">Invalid email id</span>
 		</div>
 		
 		<div class="clear"></div>
 		
-		<div class="usrpassworddv" ng-class="{true:'error'}[submitted && loginForm.password.$error]">
+		<div class="usrpassworddv" ng-class="{true:'error'}[logsubmitted && loginForm.password.$error]">
 			<label for="password"> Password: </label> 
-			<input type="password" name="password" ng-model="user.pswd" style="margin-left: 39px;" required/>
-			<span ng-show="submitted && loginForm.username.$error.required" class="error">Please enter password</span>
+			<input type="password" name="logpass" ng-model="loguser.logpass" ng-pattern="VPSWD" style="margin-left: 39px;" required/>
+			<span ng-show="logsubmitted && loginForm.logpass.$error.required" class="error">Please enter password</span>
+			<span ng-show="logsubmitted && loginForm.logpass.$error.pattern" class="error">Invalid Password</span>
 		</div>
 		
 		<div class="clear"></div>
 		
 		<div class="logPanel na-align">
 			<a href="#/">Back to Sign Up </a>
-			<button type="submit" ng-click="submitted=true" style="margin-left:88px;"> Login </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="submit" ng-click="logsubmitted=true" style="margin-left:88px;">Login</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
 		
 		<p class="text-center" ng-show="loading" style="display:none">
