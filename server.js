@@ -1,10 +1,9 @@
 	var express = require('express'),
-		http    = require('http'),
-		path    = require('path'),
 		mysql   = require('mysql'),
+		path = require('path'),
 	 dbconfig   = require('./dbconfigure.js');
 	 
-	 var port = process.env.PORT || 8080;
+	 var port = process.env.PORT || 9000;
  
 	var connection = mysql.createConnection
 	({
@@ -23,28 +22,49 @@
 	
 	app.configure(function()
 	{
-		app.use(express.static(__dirname + '/public'));
-		app.use(express.bodyParser());
+		app.use(express.static(__dirname+'/public'));
+		app.use(express.json());
+		app.use(express.urlencoded());
 		app.use(express.methodOverride());
 	});
 	
-	app.configure('development', function()
+	if ('development' == app.get('env')) 
 	{
-		app.use(express.errorHandler());
-	});
-	
-	app.post('/user', function(req, res) 
+		app.configure('development', function()	
+		{
+			app.use(express.errorHandler());
+		});
+	//	console.log(app.get('env'));
+    }
+			
+	app.post('/user1', function(req, res) 
 	{
 		var form = req.body;
-		var user = {username:req.body.username, useremail: req.body.useremail, password: req.body.password};
+		var user = {username:form.username, useremail: form.useremail, password: form.password};
 		
 		dbconfig.addUserData(user, function(err, info)
 		{
-			if(err) console.log("Somthing Went Wrong :"+ err);
+			if(err) console.log("Something Went Wrong :"+ err);
 			user.id = info.insertId;
 			res.json(user);
 		});
 	});
+	
+	app.all('/getuser', function(req,res)
+	{
+		var logdata = {logemail:req.body.logemail, logpass:req.body.logpass};
+		console.log("Request User Data :"+ logdata.logemail+" OR "+ req.body.logemail);
 		
+		dbconfig.getUserData(req.body.logemail, req.body.logpass, function(err,rows) 
+		{
+			//console.log("My Query Data: "+rows);
+			
+			if(err)
+				return res.json(err);
+			else 
+				return res.json(rows);
+		});		 
+	});
+			
 	app.listen(port);
 	console.log("Listening on Port :"+port);
